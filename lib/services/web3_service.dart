@@ -76,7 +76,7 @@ class Web3Service extends ChangeNotifier {
     try {
       await provider!.getSigner().sendTransaction(
             TransactionRequest(
-              to: "",
+              to: "0xFb08de74D3DC381d2130e8885BdaD4e558b24145",
               value: value,
             ),
           );
