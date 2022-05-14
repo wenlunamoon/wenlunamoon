@@ -63,6 +63,7 @@ flutter:
   assets:
     - assets/svg/hero.svg
     - assets/svg/overview.svg
+    - assets/png/logo.png
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:wenlunamoon/services/web3_service.dart';
+import 'package:wenlunamoon/widgets/widgets.dart';
 
-class NavigationHeader extends StatelessWidget {
-  const NavigationHeader({Key? key}) : super(key: key);
+class NavigationHeader extends ConsumerWidget {
+  const NavigationHeader({
+    Key? key,
+  }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final web3 = ref.watch(Web3Service.instance);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
       child: Row(
@@ -14,19 +20,9 @@ class NavigationHeader extends StatelessWidget {
         children: [
           Row(
             children: <Widget>[
-              Container(
-                width: 80,
-                height: 60,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(18),
-                    gradient: LinearGradient(colors: [
-                      Colors.indigo.shade900,
-                      Colors.indigo.shade200,
-                    ], begin: Alignment.bottomRight, end: Alignment.topLeft)),
-                child: const Center(
-                  child: Text("WLM",
-                      style: TextStyle(fontSize: 30, color: Colors.white)),
-                ),
+              Image.asset(
+                'assets/png/logo.png',
+                scale: 0.125,
               ),
               const SizedBox(
                 width: 16,
@@ -77,6 +73,10 @@ class NavigationHeader extends StatelessWidget {
                 ),
                 iconSize: 32.0,
               ),
+              const SizedBox(
+                width: 16.0,
+              ),
+              const Web3Button(),
             ],
           ),
         ],

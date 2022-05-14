@@ -13,6 +13,8 @@ class App extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    initServices(ref);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Wen Luna Moon?',
@@ -25,7 +27,7 @@ class App extends ConsumerWidget {
   }
 
   void initServices(WidgetRef ref) {
-    ref.read(Web3Service.instance).init();
+    ref.read(Web3Service.instance).initialize();
   }
 
   Route<dynamic>? onGenerateRoute(RouteSettings settings) {
