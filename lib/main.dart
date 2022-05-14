@@ -21,7 +21,7 @@ class App extends ConsumerWidget {
       onGenerateRoute: onGenerateRoute,
       initialRoute: '/',
       theme: ThemeData(
-        primaryColor: Colors.indigo,
+        primarySwatch: Colors.indigo,
       ),
     );
   }

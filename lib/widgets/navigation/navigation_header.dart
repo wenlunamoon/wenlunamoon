@@ -10,7 +10,6 @@ class NavigationHeader extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final web3 = ref.watch(Web3Service.instance);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
       child: Row(
