@@ -37,6 +37,9 @@ dependencies:
   hooks_riverpod: ^1.0.4
   flutter_web3: ^2.1.9
   flutter_svg: ^1.0.3
+  url_launcher: ^6.1.2
+  flutter_feather_icons: ^2.0.0+1
+  unicons: ^2.1.0
 
 dev_dependencies:
   flutter_test:

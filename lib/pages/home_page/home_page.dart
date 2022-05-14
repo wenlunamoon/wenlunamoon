@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wenlunamoon/widgets/footer/footer.dart';
 
 import '../../widgets/widgets.dart';
 import 'sections/hero_section.dart';
@@ -19,6 +20,7 @@ class HomePage extends StatelessWidget {
           children: const [
             HeroSection(),
             OverviewSection(),
+            Footer(),
           ],
         ),
       ),
