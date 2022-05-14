@@ -42,13 +42,16 @@ class DonationPage extends HookConsumerWidget {
               constraints:
                   const BoxConstraints(maxWidth: 600.0, minWidth: 600.0),
               child: Text(
-                "[TEXT GOES HERE]",
+                "If you want to support the Mission, but are not interested in holding \$WLM you can donate something directly to the treasury.",
                 style: Theme.of(context)
                     .textTheme
                     .headline5
                     ?.copyWith(color: const Color(0xFF8591B0)),
                 textAlign: TextAlign.justify,
               ),
+            ),
+            const SizedBox(
+              height: 32.0,
             ),
             ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 600.0),

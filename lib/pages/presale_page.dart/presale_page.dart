@@ -30,7 +30,7 @@ class PresalePage extends HookConsumerWidget {
               constraints:
                   const BoxConstraints(maxWidth: 600.0, minWidth: 600.0),
               child: Text(
-                "Buy WLM",
+                "Buy \$WLM",
                 style: Theme.of(context)
                     .textTheme
                     .headline2
@@ -41,13 +41,28 @@ class PresalePage extends HookConsumerWidget {
             ConstrainedBox(
               constraints:
                   const BoxConstraints(maxWidth: 600.0, minWidth: 600.0),
-              child: Text(
-                "[TEXT GOES HERE]",
-                style: Theme.of(context)
-                    .textTheme
-                    .headline5
-                    ?.copyWith(color: const Color(0xFF8591B0)),
-                textAlign: TextAlign.justify,
+              child: Column(
+                children: [
+                  const _InfoText(
+                    title: "Price",
+                    value: "~0.1\$",
+                  ),
+                  const _InfoText(
+                    title: "Remaining",
+                    value: "2.987.446/3.000.000",
+                  ),
+                  const _InfoText(
+                    title: "Ends at",
+                    value: "01 Jan. 1970 - 00:00 UTC",
+                  ),
+                  Text(
+                    "For a more detailed overview take a look at the Whitepaper",
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                  const SizedBox(
+                    height: 32.0,
+                  ),
+                ],
               ),
             ),
             ConstrainedBox(
@@ -105,6 +120,36 @@ class PresalePage extends HookConsumerWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class _InfoText extends StatelessWidget {
+  const _InfoText({required this.value, required this.title});
+
+  final String title;
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme.headline6?.copyWith(
+          color: const Color(0xFF8591B0),
+        );
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(
+          "$title:",
+          style: textTheme?.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Text(
+          value,
+          style: textTheme,
+        ),
+      ],
     );
   }
 }
