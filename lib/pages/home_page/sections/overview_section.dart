@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:wenlunamoon/utils/download_whitepaper.dart';
 
 import '../../../widgets/widgets.dart';
 
@@ -58,7 +59,9 @@ class OverviewSection extends StatelessWidget {
                   ),
                   SingleColorButton(
                     text: 'Whitepaper',
-                    onPressed: () {},
+                    onPressed: () {
+                      downloadWhitepaper();
+                    },
                     color: Colors.black,
                     background: const Color(0xFFedf3f7),
                   ),

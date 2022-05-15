@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 import 'package:wenlunamoon/services/web3_service.dart';
+import 'package:wenlunamoon/utils/download_whitepaper.dart';
 import 'package:wenlunamoon/widgets/widgets.dart';
 
 class NavigationHeader extends ConsumerWidget {
@@ -59,7 +61,9 @@ class NavigationHeader extends ConsumerWidget {
               ),
               _NavigationItem(
                 text: 'Whitepaper',
-                onPressed: () {},
+                onPressed: () {
+                  downloadWhitepaper();
+                },
               ),
               const SizedBox(
                 width: 16.0,
@@ -118,34 +122,41 @@ Future<void> _showInfoDialog(BuildContext context) async {
         title: const Text('Important Addresses'),
         content: SingleChildScrollView(
           child: ListBody(
-            children: const <Widget>[
-              Text(
+            children: <Widget>[
+              const Text(
                 '\$WLM Token:',
               ),
-              SizedBox(
+              const SizedBox(
                 height: 8.0,
               ),
-              SelectableText(
+              const SelectableText(
                 '0x1Cf87CF9e01b4497674570BAA037844A3816B7A9',
                 style: TextStyle(
                   color: Colors.grey,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 32.0,
               ),
-              Text(
+              const Text(
                 'MultiSig Treasury:',
               ),
-              SizedBox(
+              const SizedBox(
                 height: 8.0,
               ),
-              SelectableText(
+              const SelectableText(
                 '0xFb08de74D3DC381d2130e8885BdaD4e558b24145',
                 style: TextStyle(
                   color: Colors.grey,
                 ),
               ),
+              TextButton(
+                  onPressed: () {
+                    launchUrlString(
+                        "https://debank.com/profile/0xfb08de74d3dc381d2130e8885bdad4e558b24145");
+                  },
+                  child: const Text("Show on DeBank",
+                      style: const TextStyle(color: Colors.indigo))),
             ],
           ),
         ),

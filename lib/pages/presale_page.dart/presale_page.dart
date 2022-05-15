@@ -16,7 +16,7 @@ class PresalePage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final web3Service = ref.watch(Web3Service.instance);
     final controller = useTextEditingController();
-
+    web3Service.subscribeToData();
     return Scaffold(
         appBar: PreferredSize(
           preferredSize: Size(MediaQuery.of(context).size.width, 80.0),
@@ -50,17 +50,26 @@ class PresalePage extends HookConsumerWidget {
                             maxWidth: 600.0, minWidth: 600.0),
                         child: Column(
                           children: [
-                            const _InfoText(
-                              title: "Price",
-                              value: "???\$ | ???BNB",
+                            Text(
+                              "Buy at least 1 \$WLM, there are no decimals allowed during presale",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge
+                                  ?.copyWith(color: Colors.amber),
                             ),
-                            const _InfoText(
+                            _InfoText(
+                              title: "Price",
+                              value:
+                                  "${(double.parse(web3Service.tokenPrice) / pow(10, 18) + 0.0001).toStringAsFixed(4)} BNB",
+                            ),
+                            _InfoText(
                               title: "Remaining",
-                              value: "???/3.000.000",
+                              value:
+                                  "${(double.parse(web3Service.remaining) / pow(10, 18)).toStringAsFixed(0)}/3000000",
                             ),
                             const _InfoText(
                               title: "Ends at",
-                              value: "01 Jan. 1970 - 00:00 UTC",
+                              value: "16 May. 2022 - 24:00 UTC",
                             ),
                             Text(
                               "For a more detailed overview take a look at the Whitepaper",

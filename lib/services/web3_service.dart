@@ -20,6 +20,12 @@ class Web3Service extends ChangeNotifier {
 
   int currentChain = -1;
 
+  String _tp = "0";
+  String _rm = "0";
+
+  String get tokenPrice => _tp;
+  String get remaining => _rm;
+
   initialize() {
     if (!isEnabled) {
       return;
@@ -39,6 +45,21 @@ class Web3Service extends ChangeNotifier {
       final accounts = await ethereum!.requestAccount();
       if (accounts.isNotEmpty) currentAddress = accounts.first;
       currentChain = await ethereum!.getChainId();
+      notifyListeners();
+    }
+  }
+
+  subscribeToData() async {
+    final contract = Contract(
+      "0xCa9Bd10Cf6C88d3381bbd73ff90b2ff06B0788b8",
+      _buyAbi,
+      provider!.getSigner(),
+    );
+    while (true) {
+      final p = await contract.call<BigInt>('price');
+      _tp = p.toString();
+      final r = await contract.call<BigInt>('remaining');
+      _rm = r.toString();
       notifyListeners();
     }
   }
