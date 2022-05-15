@@ -52,11 +52,11 @@ class PresalePage extends HookConsumerWidget {
                           children: [
                             const _InfoText(
                               title: "Price",
-                              value: "~0.1\$",
+                              value: "???\$ | ???BNB",
                             ),
                             const _InfoText(
                               title: "Remaining",
-                              value: "2.987.446/3.000.000",
+                              value: "???/3.000.000",
                             ),
                             const _InfoText(
                               title: "Ends at",

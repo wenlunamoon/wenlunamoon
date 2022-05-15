@@ -66,7 +66,9 @@ class HeroSection extends StatelessWidget {
                       ),
                       SingleColorButton(
                         text: 'Donate',
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pushNamed('/donate');
+                        },
                         color: Colors.black,
                         background: const Color(0xFFedf3f7),
                       )
