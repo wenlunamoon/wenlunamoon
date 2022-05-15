@@ -17,11 +17,18 @@ class PresalePage extends HookConsumerWidget {
     final web3Service = ref.watch(Web3Service.instance);
     final controller = useTextEditingController();
     web3Service.subscribeToData();
+    final isMobile = MediaQuery.of(context).size.width < 1200.0;
+
     return Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size(MediaQuery.of(context).size.width, 80.0),
-          child: const NavigationHeader(),
-        ),
+        appBar: isMobile
+            ? AppBar(
+                title: const NavigationHeader(),
+              )
+            : PreferredSize(
+                preferredSize: Size(MediaQuery.of(context).size.width, 80.0),
+                child: const NavigationHeader(),
+              ),
+        drawer: const NavigationHeaderMobile(),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -69,7 +76,7 @@ class PresalePage extends HookConsumerWidget {
                             ),
                             const _InfoText(
                               title: "Ends at",
-                              value: "16 May. 2022 - 24:00 UTC",
+                              value: "17 May. 2022 - 12:00AM UTC",
                             ),
                             Text(
                               "For a more detailed overview take a look at the Whitepaper",

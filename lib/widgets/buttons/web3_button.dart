@@ -21,7 +21,7 @@ class Web3Button extends ConsumerWidget {
               color: Colors.white,
               background: Theme.of(context).errorColor,
               onPressed: () {},
-              maxWidth: 300.0,
+              maxWidth: 200.0,
             );
           }
 
@@ -31,7 +31,7 @@ class Web3Button extends ConsumerWidget {
               color: Colors.white,
               background: Theme.of(context).errorColor,
               onPressed: () {},
-              maxWidth: 300.0,
+              maxWidth: 200.0,
             );
           }
 
@@ -42,7 +42,7 @@ class Web3Button extends ConsumerWidget {
               background: Colors.indigo.shade400,
               icon: Icons.logout,
               onPressed: () => web3Service.clear(),
-              maxWidth: 300.0,
+              maxWidth: 200.0,
             );
           }
 
@@ -52,7 +52,7 @@ class Web3Button extends ConsumerWidget {
             background: Colors.indigo.shade800,
             icon: Icons.account_balance_wallet_outlined,
             onPressed: () => web3Service.connect(),
-            maxWidth: 300.0,
+            maxWidth: 200.0,
           );
         },
       ),

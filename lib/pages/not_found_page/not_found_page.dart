@@ -9,11 +9,18 @@ class NotFoundPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = MediaQuery.of(context).size.width < 1200.0;
+
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size(MediaQuery.of(context).size.width, 80.0),
-        child: const NavigationHeader(),
-      ),
+      appBar: isMobile
+          ? AppBar(
+              title: const NavigationHeader(),
+            )
+          : PreferredSize(
+              preferredSize: Size(MediaQuery.of(context).size.width, 80.0),
+              child: const NavigationHeader(),
+            ),
+      drawer: const NavigationHeaderMobile(),
       body: SingleChildScrollView(
         child: Column(
           children: [
