@@ -55,7 +55,7 @@ class Web3Service extends ChangeNotifier {
     }
     try {
       final contract = Contract(
-        "0x55A8E06678636645D32f367522C029af4E040b9a",
+        "0xCa9Bd10Cf6C88d3381bbd73ff90b2ff06B0788b8",
         _buyAbi,
         provider!.getSigner(),
       );
@@ -98,6 +98,11 @@ const _buyAbi = '''
         {
           "internalType": "address",
           "name": "_token",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_native",
           "type": "address"
         }
       ],
@@ -257,5 +262,9 @@ const _buyAbi = '''
           "name": "",
           "type": "address"
         }
-      ]
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ]
 ''';
