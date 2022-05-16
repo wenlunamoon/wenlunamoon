@@ -1,53 +1,29 @@
-import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:wenlunamoon/services/web3_service.dart';
+import 'package:routemaster/routemaster.dart';
 
-import 'pages/pages.dart';
+import 'shared/shared.dart';
+import 'package:flutter/material.dart';
+
+import 'core/core.dart';
 
 void main() {
-  runApp(const ProviderScope(child: App()));
+  setupLogger();
+  runApp(const ProviderScope(child: DeFiPool()));
 }
 
-class App extends ConsumerWidget {
-  const App({Key? key}) : super(key: key);
+class DeFiPool extends StatelessWidget {
+  const DeFiPool({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    initServices(ref);
-
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Wen Luna Moon?',
-      onGenerateRoute: onGenerateRoute,
-      initialRoute: '/',
+  Widget build(BuildContext context) {
+    return MaterialApp.router(
       theme: ThemeData(
-        primarySwatch: Colors.indigo,
+        primarySwatch: Colors.blue,
       ),
-    );
-  }
-
-  void initServices(WidgetRef ref) {
-    ref.read(Web3Service.instance).initialize();
-  }
-
-  Route<dynamic>? onGenerateRoute(RouteSettings settings) {
-    switch (settings.name) {
-      case '/':
-        return createRoute(const HomePage(), settings);
-      case '/presale':
-        return createRoute(const PresalePage(), settings);
-      case '/donate':
-        return createRoute(const DonationPage(), settings);
-    }
-    return createRoute(const NotFoundPage(), settings);
-  }
-
-  Route<dynamic> createRoute(Widget child, RouteSettings settings) {
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => child,
-      transitionDuration: Duration.zero,
-      reverseTransitionDuration: Duration.zero,
-      settings: settings,
+      title: Language.title,
+      routerDelegate: RoutemasterDelegate(routesBuilder: (context) => routes),
+      routeInformationParser: const RoutemasterParser(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

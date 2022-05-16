@@ -41,6 +41,9 @@ dependencies:
   flutter_feather_icons: ^2.0.0+1
   unicons: ^2.1.0
   responsive_builder: ^0.4.2
+  routemaster: ^1.0.0
+  jdenticon_dart: ^2.0.0
+  logging: ^1.0.2
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +70,8 @@ flutter:
   assets:
     - assets/svg/hero.svg
     - assets/svg/overview.svg
+    - assets/svg/welcome.svg
+    - assets/svg/roadmap.svg
     - assets/png/logo.png
   # assets:
   #   - images/a_dot_burr.jpeg
